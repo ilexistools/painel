@@ -1,6 +1,30 @@
 {
+  "paineis": [
+    {
+      "title": "PEA",
+      "tip": "Projetos das unidades",
+      "order": 2
+    },
+     {
+      "title": "PEA",
+      "tip": "Projetos das unidades",
+      "order": 1
+    },
+    {
+      "title": "Sondagem",
+      "tip": "Resultados da sondagem educacional",
+      "order": 2
+    },
+     {
+      "title": "IDEB",
+      "tip": "Índice de Desenvolvimento da Educação Básica",
+      "order": 3
+    }
+  ],
+
   "produtos": [
     { "id": 1, "nome": "Caneta", "preco": 2.5 },
     { "id": 2, "nome": "Caderno", "preco": 15.0 }
   ]
+
 }
