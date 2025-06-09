@@ -1,11 +1,19 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 class JsonServerManager {
   static Process? _jsonServerProcess;
   static bool _isRunning = false;
 
-  /// Inicia o json-server automaticamente
+  /// Inicia o json-server automaticamente (apenas em plataformas desktop)
   static Future<void> startJsonServer() async {
+    // Só tenta iniciar o json-server em plataformas desktop
+    if (kIsWeb) {
+      print('JSON Server não pode ser iniciado na web. Execute manualmente:');
+      print('json-server --watch db.json --port 3000');
+      return;
+    }
+
     if (_isRunning) {
       print('JSON Server já está rodando');
       return;
@@ -30,6 +38,7 @@ class JsonServerManager {
 
       _isRunning = true;
       print('JSON Server iniciado na porta 3000');
+      print('Acesse: http://localhost:3000/paineis');
       
       // Escuta a saída do processo para debug (opcional)
       _jsonServerProcess?.stdout.listen((data) {
@@ -44,6 +53,9 @@ class JsonServerManager {
       print('Erro ao iniciar JSON Server: $e');
       print('Certifique-se de que o json-server está instalado globalmente:');
       print('npm install -g json-server');
+      print('');
+      print('Para web, execute manualmente em um terminal separado:');
+      print('json-server --watch db.json --port 3000');
     }
   }
 
