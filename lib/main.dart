@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:painel/routes.dart'; // ajuste o path se necessário
+import 'package:painel/json_server_manager.dart';
 
-void main() {
+void main() async {
+  // Garante que os widgets estão inicializados
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Inicia o JSON Server automaticamente
+  await JsonServerManager.startJsonServer();
+  
   runApp(const MyApp());
 }
 
@@ -35,3 +42,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
